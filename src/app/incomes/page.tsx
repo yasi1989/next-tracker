@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import TracksContainer from "./_containers/tracks/container";
-import Skelton from "./_components/tracks/data-table-skelton";
+import Skelton from "../_components/tracks/data-table-skelton";
 
 export const experimental_ppr = true
 
