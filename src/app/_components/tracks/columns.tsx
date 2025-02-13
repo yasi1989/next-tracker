@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Track } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
 import { format } from "date-fns/format";
+import { ArrowUpDown } from "lucide-react";
 
   export const columns: ColumnDef<Track>[] = [
     {
@@ -13,6 +14,7 @@ import { format } from "date-fns/format";
         onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Description
+          <ArrowUpDown />
         </Button>
       )
     },
@@ -25,6 +27,7 @@ import { format } from "date-fns/format";
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
           >
             Amount
+            <ArrowUpDown />
           </Button>
         )
       }
@@ -38,6 +41,7 @@ import { format } from "date-fns/format";
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
           >
             TransactionType
+            <ArrowUpDown />
           </Button>
         )
       },
@@ -51,6 +55,7 @@ import { format } from "date-fns/format";
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
           >
             Date
+            <ArrowUpDown />
           </Button>
         )
       },
