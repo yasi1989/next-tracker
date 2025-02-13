@@ -10,7 +10,7 @@
 # 利用技術
 + NextJS
 + TypeScript
-+ Tailwind
++ TailwindCSS
 + shadcn/ui
 + supabase
 
