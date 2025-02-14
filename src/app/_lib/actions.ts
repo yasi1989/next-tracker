@@ -1,5 +1,8 @@
+"use server"
 import { prisma } from "@/lib/prisma";
 import { Track } from "@prisma/client";
+import { TrackState } from "./trackActionType";
+import { revalidatePath } from "next/cache";
 
 export async function getTracks(): Promise<Track[]> {
   const trackes = await prisma.track.findMany({
@@ -20,4 +23,31 @@ export async function getTrackesByTransactionType(transactionType: string): Prom
     }
   });
   return trackes;
+}
+
+export async function deleteTrack(id: string): Promise<TrackState> {
+  try {
+    await prisma.track.delete({
+      where: {
+        id: id,
+      }
+    });
+    revalidatePath("/");
+    return {
+      error: "",
+      success: true,
+    }
+  } catch (error) {
+    if (error instanceof Error) {
+      return {
+        error: error.message,
+        success: false,
+      }
+    } else {
+      return {
+        error: "システム異常が発生しました。",
+        success: false,
+      }
+    }
+  }
 }
