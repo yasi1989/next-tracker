@@ -6,7 +6,7 @@ export const experimental_ppr = true
 
 export default function Home() {
   return (
-    <div className="p-4">
+    <div>
       <Suspense fallback={<Skelton />}>
         <TracksContainer />
       </Suspense>

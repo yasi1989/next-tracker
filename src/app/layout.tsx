@@ -34,7 +34,7 @@ export default function RootLayout({
       >
         <div className="grid grid-cols-[280px_auto] grid-rows-[auto_1fr] h-svh">
           <Header />
-          <main className="grid col-start-2 row-start-2 overflow-x-hidden overflow-y-auto bg-slate-100 p-6 content-start">
+          <main className="grid col-start-2 row-start-2 overflow-x-hidden overflow-y-auto bg-slate-100 p-4 content-start">
             {children}
           </main>
           <SideMenu />

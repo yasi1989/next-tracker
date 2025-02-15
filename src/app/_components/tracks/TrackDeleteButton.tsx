@@ -1,5 +1,5 @@
 import { deleteTrack } from "@/app/_lib/actions";
-import { initialState, TrackState } from "@/app/_lib/trackActionType";
+import { initialState, TrackState } from "@/app/_lib/track-action-type";
 import { Button } from "@/components/ui/button";
 import { useActionState } from "react";
 
@@ -16,7 +16,7 @@ const TrackDeleteButton = ({ id }: TrackDeleteButton) => {
   return (
     <>
       <form action={formAction}>
-        <Button variant="destructive" disabled={pending}>
+        <Button variant="destructive" size="sm" disabled={pending}>
           Delete
         </Button>
       </form>

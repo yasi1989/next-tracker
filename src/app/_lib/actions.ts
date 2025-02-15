@@ -1,8 +1,8 @@
 "use server"
 import { prisma } from "@/lib/prisma";
 import { Track } from "@prisma/client";
-import { TrackState } from "./trackActionType";
 import { revalidatePath } from "next/cache";
+import { TrackState } from "./track-action-type";
 
 export async function getTracks(): Promise<Track[]> {
   const trackes = await prisma.track.findMany({

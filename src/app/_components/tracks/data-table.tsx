@@ -20,6 +20,8 @@ import {
 } from "@/components/ui/table";
 import React from "react";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -50,12 +52,17 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="flex flex-col gap-4">
-      <Input
-        placeholder="Filter descriptions..."
-        value={(table.getColumn("description")?.getFilterValue() as string) ?? ""}
-        onChange={(event) => table.getColumn("description")?.setFilterValue(event.target.value)}
-        className="max-w-sm bg-slate-50"
-      />
+      <div className="flex justify-between items-center">
+        <Input
+          placeholder="Filter descriptions..."
+          value={(table.getColumn("description")?.getFilterValue() as string) ?? ""}
+          onChange={(event) => table.getColumn("description")?.setFilterValue(event.target.value)}
+          className="max-w-sm bg-slate-50"
+        />
+        <Link href={"/add"}>
+          <Button size="sm">Add Track</Button>
+        </Link>
+      </div>
       <div className="rounded-md border">
         <Table>
           <TableHeader>
