@@ -18,50 +18,24 @@ import {
 import { cn } from "@/lib/utils";
 import { format } from "date-fns/format";
 import { CalendarIcon } from "lucide-react";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { startTransition, useActionState } from "react";
-import { addTrack } from "@/app/_lib/actions";
-import { initialState } from "@/app/_lib/track-action-type";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { useTrackForm } from "@/app/_hooks/useTrackForm";
 
 const TrackNewForm = () => {
-  const FormSchema = z.object({
-    description: z.string({required_error: "Description is required."}),
-    amount: z.string({required_error: "Amount is required."}),
-    transactionType: z.enum(["income", "expense"], { required_error: "Transaction type is required."}),
-    date: z.date({required_error: "Date is required."})
-  });
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
-    defaultValues: {
-      description: "",
-      amount: "0",
-      transactionType: undefined,
-      date: undefined,
-    }
-  })
-  const [state, formAction, isPending] = useActionState(addTrack, initialState);
-
-  const handleSubmit = (values: z.infer<typeof FormSchema>) => {
-    startTransition(() => {
-      const formData = new FormData();
-      Object.entries(values).forEach(([Key, value]) => {
-        if(value instanceof Date) {
-          formData.append(Key, value.toISOString());
-        } else {
-          formData.append(Key, value);
-        }
-        formAction(formData);
-      })
-    })
-  }
+  const { form, handleSubmit, state, isPending } = useTrackForm();
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
-      <FormField
+      <form onSubmit={form.handleSubmit(handleSubmit)} className="grid grid-cols-[minmax(auto,_480px)] gap-y-6 justify-center">
+        <h2 className="text-2xl font-semibold text-center">Create Track</h2>
+        <FormField
           control={form.control}
           name="description"
           render={({ field }) => (
@@ -75,19 +49,19 @@ const TrackNewForm = () => {
           )}
         />
         <FormField
-            control={form.control}
-            name="amount"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Amount</FormLabel>
-                <FormControl>
-                  <Input placeholder="Amount" type="text" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
+          control={form.control}
+          name="amount"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Amount</FormLabel>
+              <FormControl>
+                <Input placeholder="Amount" type="text" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
           control={form.control}
           name="transactionType"
           render={({ field }) => (
@@ -113,7 +87,7 @@ const TrackNewForm = () => {
           name="date"
           render={({ field }) => (
             <FormItem className="flex flex-col">
-              <FormLabel>Date of birth</FormLabel>
+              <FormLabel>Date</FormLabel>
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -149,7 +123,9 @@ const TrackNewForm = () => {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button type="submit" disabled={isPending}>
+          Submit
+        </Button>
       </form>
     </Form>
   );
