@@ -5,6 +5,7 @@ import Header from "./_components/Header";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import SideMenu from "./_components/SideMenu";
+import { Toaster } from "sonner";
 config.autoAddCss = false;
 
 const geistSans = Geist({
@@ -34,9 +35,10 @@ export default function RootLayout({
       >
         <div className="grid grid-cols-[280px_auto] grid-rows-[auto_1fr] h-svh">
           <Header />
-          <main className="grid col-start-2 row-start-2 overflow-x-hidden overflow-y-auto bg-slate-100 p-6 content-start">
+          <main className="grid col-start-2 row-start-2 overflow-x-hidden overflow-y-auto bg-slate-100 p-4 content-start">
             {children}
           </main>
+          <Toaster />
           <SideMenu />
         </div>
         </body>

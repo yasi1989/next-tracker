@@ -1,4 +1,4 @@
-import TrackTable from "@/app/_features/tracks/TrackTable";
+import TrackTable from "@/app/_features/tracks/list/TrackTable";
 import { getTrackesByTransactionType } from "@/app/_lib/actions"
 
 const TracksContainer = async () => {

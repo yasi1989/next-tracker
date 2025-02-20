@@ -1,12 +1,12 @@
 import { Suspense } from "react";
-import Skelton from "./_features/tracks/data-table-skelton";
 import TracksContainer from "./_containers/tracks/container";
+import Skelton from "./_features/tracks/list/data-table-skelton";
 
 export const experimental_ppr = true
 
 export default function Home() {
   return (
-    <div className="p-4">
+    <div>
       <Suspense fallback={<Skelton />}>
         <TracksContainer />
       </Suspense>
