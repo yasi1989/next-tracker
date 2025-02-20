@@ -51,3 +51,14 @@ export async function deleteTrack(id: string): Promise<TrackState> {
     }
   }
 }
+
+export async function addTrack(prevState: TrackState, formData: FormData): Promise<TrackState> {
+  console.log(formData.get("description") as string);
+  console.log(formData.get("amount") as string);
+  console.log(formData.get("transactionType") as string);
+  console.log(formData.get("date") as string);
+  return {
+    error: "システム異常が発生しました。",
+    success: false,
+  }
+}
