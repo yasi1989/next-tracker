@@ -8,7 +8,7 @@ import FormDatePicker from "./FormDatePicker";
 import { Form } from "@/components/ui/form";
 
 const TrackNewForm = () => {
-  const { form, handleSubmit, isPending } = useTrackForm();
+  const { form, handleSubmit, isPending } = useTrackForm({});
 
   return (
     <Form {...form}>

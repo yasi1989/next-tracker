@@ -5,18 +5,28 @@ import { FormSchema } from "../_lib/form-schema";
 import { addTrack } from "../_lib/actions";
 import { useTransition } from "react";
 import { toast } from "sonner";
+import { Track } from "@prisma/client";
 
-export const useTrackForm = () => {
+type UseFormProps = {
+  track?: Track | null;
+}
+
+export const useTrackForm = ({track} : UseFormProps) => {
     const [isPending, startTransition] = useTransition();
 
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
-        defaultValues: {
+        defaultValues: track ? {
+          description: track.description,
+          amount: track.amount.toString(),
+          transactionType: track.transactionType as "income" | "expense",
+          date: track.date,
+        } : {
           description: "",
           amount: "0",
           transactionType: undefined,
           date: undefined,
-        }
+        },
       })
     
       const handleSubmit = (values: z.infer<typeof FormSchema>) => {

@@ -6,6 +6,13 @@ import { TrackState } from "./track-action-type";
 import { z } from "zod";
 import { FormSchema } from "./form-schema";
 
+export async function getTrack(id: string): Promise<Track | null> {
+  const track = await prisma.track.findUnique({
+    where: {id},
+  });
+  return track;
+}
+
 export async function getTracks(): Promise<Track[]> {
   const trackes = await prisma.track.findMany({
     orderBy: {
