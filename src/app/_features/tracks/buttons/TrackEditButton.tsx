@@ -1,5 +1,4 @@
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import LinkButton from "./LinkButton";
 
 type TrackEditButtonProps = {
   id: string;
@@ -7,9 +6,7 @@ type TrackEditButtonProps = {
 
 const TrackEditButton = ({ id }: TrackEditButtonProps) => {
   return (
-    <Link href={`/edit/${id}`}>
-      <Button className="bg-blue-500" size="sm">Edit</Button>
-    </Link>
+    <LinkButton label="Edit" size="sm" link={`/edit/${id}`} className="bg-blue-500" />
   );
 };
 

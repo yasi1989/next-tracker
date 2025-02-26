@@ -6,12 +6,13 @@ type LinkButtonProps = {
     link: string,
     size?: "default" | "sm" | "lg" | "icon" | null | undefined,
     label: string,
+    className?: string,
 }
 
-const LinkButton = ({variant = "default", link, size = "default", label}: LinkButtonProps) => {
+const LinkButton = ({variant = "default", link, size = "default", label, className = ""}: LinkButtonProps) => {
   return (
     <Link href={link}>
-      <Button variant={variant} size={size}>{label}</Button>
+      <Button variant={variant} size={size} className={className}>{label}</Button>
     </Link>
   )
 }
