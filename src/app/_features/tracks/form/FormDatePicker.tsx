@@ -1,4 +1,4 @@
-import { FormValues } from "@/app/_type/type";
+import { FormValues } from "@/app/_features/_type/type";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";

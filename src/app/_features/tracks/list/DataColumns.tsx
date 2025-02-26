@@ -4,10 +4,10 @@ import { Track } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
 import { format } from "date-fns/format";
 import { ArrowUpDown } from "lucide-react";
-import TrackDeleteButton from "../actions/TrackDeleteButton";
-import TrackEditButton from "../actions/TrackEditButton";
+import TrackDeleteButton from "../buttons/TrackDeleteButton";
+import TrackEditButton from "../buttons/TrackEditButton";
 
-export const columns: ColumnDef<Track>[] = [
+export const DataColumns: ColumnDef<Track>[] = [
   {
     accessorKey: "description",
     header: ({ column }) => (

@@ -1,6 +1,7 @@
 export type FormValues = {
+    id: string;
     description: string;
     date: Date;
-    amount: string;
+    amount: number;
     transactionType: "expense" | "income";
 };

@@ -1,4 +1,4 @@
-import { FormValues } from "@/app/_type/type"
+import { FormValues } from "@/app/_features/_type/type"
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { UseFormReturn } from "react-hook-form"

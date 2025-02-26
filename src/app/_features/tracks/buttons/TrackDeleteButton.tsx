@@ -1,5 +1,5 @@
 import { deleteTrack } from "@/app/_lib/actions";
-import { initialState, TrackState } from "@/app/_lib/track-action-type";
+import { initialState, TrackState } from "@/app/_lib/trackActionType";
 import { Button } from "@/components/ui/button";
 import { useActionState } from "react";
 

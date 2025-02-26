@@ -1,6 +1,6 @@
 import { Track } from "@prisma/client";
-import { DataTable } from "./data-table";
-import { columns } from "./columns";
+import { DataTable } from "./DataTable";
+import { DataColumns } from "./DataColumns";
 
 type TrackTableProps = {
   trackes: Track[];
@@ -9,7 +9,7 @@ type TrackTableProps = {
 const TrackTable = ({trackes} : TrackTableProps) => {
   return (
     <div className="container mx-auto">
-      <DataTable columns={columns} data={trackes} />
+      <DataTable columns={DataColumns} data={trackes} />
     </div>
   )
 }

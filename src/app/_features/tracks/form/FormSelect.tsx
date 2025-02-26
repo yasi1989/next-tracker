@@ -1,4 +1,4 @@
-import { FormValues } from "@/app/_type/type";
+import { FormValues } from "@/app/_features/_type/type";
 import {
   FormControl,
   FormField,

@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { useTrackForm } from "@/app/_hooks/useTrackForm";
+import { useTrackForm } from "@/app/_features/_hooks/useTrackForm";
 import FormInput from "./FormInput";
 import FormSelect from "./FormSelect";
 import { transactionTypeItems } from "@/app/_const/const";
@@ -8,7 +8,8 @@ import FormDatePicker from "./FormDatePicker";
 import { Form } from "@/components/ui/form";
 
 const TrackNewForm = () => {
-  const { form, handleSubmit, isPending } = useTrackForm({});
+  const type = "add";
+  const { form, handleSubmit, isPending } = useTrackForm({type});
 
   return (
     <Form {...form}>
